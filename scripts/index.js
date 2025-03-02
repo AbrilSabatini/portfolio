@@ -76,19 +76,22 @@ function generateProjects(projects) {
   const portfolioContainer = document.querySelector("#portfolio .row");
   portfolioContainer.innerHTML = ""; // Limpiar contenido previo
 
+  // Limpiar modales previos
+  document.querySelectorAll(".modal").forEach((modal) => modal.remove());
+
   const modalContainer = document.createElement("div"); // Contenedor para los modales
 
   projects.forEach((project, index) => {
     console.log("Proyecto actual:", project);
     const projectId = `portfolioItem${index + 1}`;
 
-    // **Crear tarjeta del proyecto**
+    // Crear tarjeta del proyecto
     const projectElement = document.createElement("div");
     projectElement.classList.add("col-md-4", "col-xs-6");
     projectElement.innerHTML = `
       <div class="portfolio-item">
         <img src="${
-          project.imageUrl || "assets/img/portfolio-1.jpg"
+          project.imageUrl || "assets/img/Portfolio-1.jpg"
         }" class="img-res" alt="${project.name}">
         <div class="portfolio-item-info">
           <h4 class="project-title">${project.name}</h4>
@@ -104,7 +107,7 @@ function generateProjects(projects) {
 
     portfolioContainer.appendChild(projectElement);
 
-    // **Crear modal del proyecto**
+    // Crear modal del proyecto
     const modalElement = document.createElement("div");
     modalElement.classList.add("modal", "fade");
     modalElement.id = projectId;
