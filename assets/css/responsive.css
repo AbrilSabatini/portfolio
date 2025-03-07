@@ -15,8 +15,9 @@
     min-height: 600px;
   }
 
-  .hero img {
-    height: 500px;
+  .hero iframe {
+		width: 240.4px;
+    height: 340px;
   }
 
   /* SITEMAIN
