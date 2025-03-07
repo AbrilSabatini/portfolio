@@ -20,11 +20,23 @@ function startIndex() {
     aboutElement.innerHTML = aboutMe.replace(/\n/g, "<br>");
   }
 
-  // CV Link Element
-  const cvLink = localStorage.getItem("cv_link");
-  const cvLinkElement = document.querySelector(".cv-link");
-  cvLinkElement.href = cvLink;
-  cvLinkElement.download = "CV_" + name.replace(/\s+/g, "_") + ".pdf";
+  // Cv iframe
+  const cvLink =
+    "https://drive.google.com/file/d/1qHjMR6NawFaFA0NEI-Yv7cprN3X5urUF/view?usp=sharing";
+
+  if (cvLink) {
+    const cvId = cvLink.split("/d/")[1]?.split("/")[0]; // Obtener id del archivo de google drive
+    console.log("ID del CV:", cvId);
+    const cvIframeElement = document.querySelector(".cv-iframe");
+    cvIframeElement.src = `https://drive.google.com/file/d/${cvId}/preview`;
+
+    // CV Link Element
+    const cvLinkElement = document.querySelector(".cv-link");
+    cvLinkElement.href = `https://drive.google.com/uc?export=download&id=${cvId}`;
+    cvLinkElement.download = "CV_" + name.replace(/\s+/g, "_") + ".pdf";
+  } else {
+    console.error("No se pudo extraer el ID del CV de Google Drive.");
+  }
 
   // About Section
   const aboutSections = JSON.parse(localStorage.getItem("about_section"));
