@@ -21,8 +21,7 @@ function startIndex() {
   }
 
   // Cv iframe
-  const cvLink =
-    "https://drive.google.com/file/d/1qHjMR6NawFaFA0NEI-Yv7cprN3X5urUF/view?usp=sharing";
+  const cvLink = localStorage.getItem("cv_link");
 
   if (cvLink) {
     const cvId = cvLink.split("/d/")[1]?.split("/")[0]; // Obtener id del archivo de google drive
