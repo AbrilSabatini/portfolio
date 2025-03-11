@@ -98,16 +98,20 @@ function generateProjects(projects) {
     projectElement.innerHTML = `
       <div class="portfolio-item">
         <img src="${
-          project.imageUrl || "assets/img/Portfolio-1.jpg"
+          project.coverImageUrl || "assets/img/Portfolio-1.jpg"
         }" class="img-res" alt="${project.name}">
         <div class="portfolio-item-info">
           <h4 class="project-title">${project.name}</h4>
           <a href="#" data-toggle="modal" data-target="#${projectId}">
             <span class="glyphicon glyphicon-eye-open"></span>
           </a>
-          <a href="${project.githubUrl}" target="_blank">
+          ${
+            project.githubUrl
+              ? `<a href="${project.githubUrl}" target="_blank">
             <span class="glyphicon glyphicon-link"></span>
-          </a>
+          </a>`
+              : ""
+          }
         </div>
       </div>
     `;
@@ -128,7 +132,7 @@ function generateProjects(projects) {
               <span class="glyphicon glyphicon-remove"></span>
             </a>
             <img src="${
-              project.imageUrl || "assets/img/portfolio-1.jpg"
+              project.imageUrl || "assets/img/Portfolio-1.jpg"
             }" class="img-res" alt="${project.name}">
           </div>
           <div class="modal-body">
@@ -143,9 +147,13 @@ function generateProjects(projects) {
             </p>
           </div>
           <div class="modal-footer">
-            <a href="${project.githubUrl}" class="btn btn-fill" target="_blank">
-              Ver en GitHub <span class="bi bi-github"></span>
-            </a>
+          ${
+            project.githubUrl
+              ? `<a href="${project.githubUrl}" class="btn btn-fill" target="_blank">
+            Ver en GitHub <span class="bi bi-github"></span>
+          </a>`
+              : ""
+          }          
           </div>
         </div>
       </div>
