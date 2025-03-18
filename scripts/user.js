@@ -92,11 +92,19 @@ function generateProjects(projects) {
     console.log("Proyecto actual:", project);
     const projectId = `portfolioItem${index + 1}`;
 
+    // Obterner tecnología principal
+    const mainTech =
+      project.tecnologies?.find((tech) => tech.isFramework)?.name ||
+      "No especificado";
+
     // Crear tarjeta del proyecto
     const projectElement = document.createElement("div");
     projectElement.classList.add("col-md-4", "col-xs-6");
     projectElement.innerHTML = `
       <div class="portfolio-item">
+        <div class="main-tech"> 
+          <p>${mainTech}</p>
+        </div> 
         <img src="${
           project.coverImageUrl || "assets/img/Portfolio-1.jpg"
         }" class="img-res" alt="${project.name}">

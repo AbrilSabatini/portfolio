@@ -396,17 +396,13 @@
       left: 15px !important; 
     }
 
-    .portfolio-item:before {
-      background-color: rgba(
-        33,
-        33,
-        33,
-        0.4
-      ) !important; /
-    }
-
     .portfolio-item-info a {
       visibility: visible !important; 
+    }
+
+    .main-tech p {
+      font-size: 12px;
+      font-weight: normal;
     }
   }
 

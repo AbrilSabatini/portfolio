@@ -450,8 +450,8 @@ body {
   -ms-transition: background-color 0.25s ease-in-out;
 }
 
-.portfolio-item:hover:before {
-  background-color: rgba(33, 33, 33, 0.6);
+.portfolio-item:before {
+  background-color: rgba(19, 19, 19, 0.671);
 }
 
 .portfolio-item-info {
@@ -470,6 +470,22 @@ body {
 .portfolio-item:hover .portfolio-item-info {
   left: 50px;
   opacity: 1;
+}
+
+.main-tech {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /*background: rgba(0, 0, 0, 0.6);*/
+  padding: 2px 8px;
+  z-index: 10;
+}
+
+.main-tech p {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
 }
 
 .portfolio-item-info h4 {
