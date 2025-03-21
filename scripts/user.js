@@ -69,7 +69,9 @@ function generateAboutSections(aboutSections) {
 
     sectionElement.innerHTML = `
       <div class="service">
-        <img src="assets/img/mortarboard.svg" width="70" height="58" alt="Education">
+        <img src="${
+          section.iconUrl ? `${section.iconUrl}` : "assets/img/mortarboard.svg"
+        }" width="70" height="58" alt="Education">
         <h4 class="title">${section.title}</h4>
         <p class="description">${section.description}</p>
       </div>
