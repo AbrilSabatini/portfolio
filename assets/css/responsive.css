@@ -400,9 +400,21 @@
       visibility: visible !important; 
     }
 
+    .img-res {
+      max-height: 100%;
+    }
+
+    .portfolio-item:before {
+      height: 100%;
+    }
+
     .main-tech p {
       font-size: 12px;
       font-weight: normal;
+    }
+
+    .portfolio-item-info h4 {
+      font-size: 20px;
     }
   }
 
