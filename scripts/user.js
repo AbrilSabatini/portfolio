@@ -188,10 +188,10 @@ function generateExperience(experiences) {
     experienceItem.classList.add("experience-item", "row");
 
     experienceItem.innerHTML = `
-      <h4 class="position">${exp.position}</h4>
+      <h4 class="position">${exp.position} - ${exp.company}</h4>
       <p class="description-experience">${exp.description}</p>
       <div class="text-center">
-        <p>${exp.startDate} 💕 ${
+        <p>${exp.startDate} 💻 ${
       exp.endDate == null ? "Actualidad" : exp.endDate
     }</p>
       </div>

@@ -599,7 +599,6 @@ body {
 .experience-item {
   padding: 50px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
   margin-bottom: 20px;
 }
 
@@ -611,7 +610,7 @@ body {
 form {
   padding: 50px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 5px;
 }
 .section-form .btn {
   margin-top: 40px;
