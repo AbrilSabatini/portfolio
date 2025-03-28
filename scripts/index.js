@@ -20,7 +20,7 @@ async function fetchUsers() {
       button.classList.add("btn-border", "btn");
       button.addEventListener("click", () => {
         localStorage.setItem("userId", user.id);
-        window.location.href = "loader.html";
+        window.location.href = "user.html";
       });
 
       listItem.appendChild(button);

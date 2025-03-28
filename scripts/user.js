@@ -1,60 +1,72 @@
 function startIndex() {
-  // Name Element
-  const name = localStorage.getItem("name");
-  const nameElement = document.querySelector(".name");
-  if (nameElement && name) {
-    nameElement.textContent = name;
+  const userId = localStorage.getItem("userId");
+
+  if (!userId) {
+    window.location.href = "index.html"; // Redirigir si no hay usuario
+    return;
   }
 
-  // Job Title Element
-  const jobTitle = localStorage.getItem("job_title");
-  const jobTitleElement = document.querySelector(".job-title");
-  if (jobTitleElement && jobTitle) {
-    jobTitleElement.textContent = jobTitle;
-  }
+  fetch(`https://portfolio-backend-1zhb.onrender.com/users/${userId}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Name Element
+      const name = data.name;
+      const nameElement = document.querySelector(".name");
+      if (nameElement && name) {
+        nameElement.textContent = name;
+      }
 
-  // About Me Element
-  const aboutMe = localStorage.getItem("about_me");
-  const aboutElement = document.querySelector(".about-me");
-  if (aboutElement && aboutMe) {
-    aboutElement.innerHTML = aboutMe.replace(/\n/g, "<br>");
-  }
+      // Job Title Element
+      const jobTitle = data.jobTitle;
+      const jobTitleElement = document.querySelector(".job-title");
+      if (jobTitleElement && jobTitle) {
+        jobTitleElement.textContent = jobTitle;
+      }
 
-  // Cv iframe
-  const cvLink = localStorage.getItem("cv_link");
+      // About Me Element
+      const aboutMe = data.about;
+      const aboutElement = document.querySelector(".about-me");
+      if (aboutElement && aboutMe) {
+        aboutElement.innerHTML = aboutMe.replace(/\n/g, "<br>");
+      }
 
-  if (cvLink) {
-    const cvId = cvLink.split("/d/")[1]?.split("/")[0]; // Obtener id del archivo de google drive
-    console.log("ID del CV:", cvId);
-    const cvIframeElement = document.querySelector(".cv-iframe");
-    cvIframeElement.src = `https://drive.google.com/file/d/${cvId}/preview`;
+      // Cv iframe
+      const cvLink = data.cvUrl;
 
-    // CV Link Element
-    const cvLinkElement = document.querySelector(".cv-link");
-    cvLinkElement.href = `https://drive.google.com/uc?export=download&id=${cvId}`;
-    cvLinkElement.download = "CV_" + name.replace(/\s+/g, "_") + ".pdf";
-  } else {
-    console.error("No se pudo extraer el ID del CV de Google Drive.");
-  }
+      if (cvLink) {
+        const cvId = cvLink.split("/d/")[1]?.split("/")[0]; // Obtener id del archivo de google drive
+        console.log("ID del CV:", cvId);
+        const cvIframeElement = document.querySelector(".cv-iframe");
+        cvIframeElement.src = `https://drive.google.com/file/d/${cvId}/preview`;
 
-  // About Section
-  const aboutSections = JSON.parse(localStorage.getItem("about_section"));
-  console.log("Secciones de about:", aboutSections);
-  if (aboutSections && aboutSections.length > 0) {
-    generateAboutSections(aboutSections);
-  }
+        // CV Link Element
+        const cvLinkElement = document.querySelector(".cv-link");
+        cvLinkElement.href = `https://drive.google.com/uc?export=download&id=${cvId}`;
+        cvLinkElement.download = "CV_" + name.replace(/\s+/g, "_") + ".pdf";
+      } else {
+        console.error("No se pudo extraer el ID del CV de Google Drive.");
+      }
 
-  // Projects
-  const projects = JSON.parse(localStorage.getItem("projects"));
-  if (projects && projects.length > 0) {
-    generateProjects(projects);
-  }
+      // About Section
+      const aboutSections = data.aboutSections;
+      console.log("Secciones de about:", aboutSections);
+      if (aboutSections && aboutSections.length > 0) {
+        generateAboutSections(aboutSections);
+      }
 
-  // Experiences
-  const experiences = JSON.parse(localStorage.getItem("experiences"));
-  if (experiences && experiences.length > 0) {
-    generateExperience(experiences);
-  }
+      // Projects
+      const projects = data.projects;
+      if (projects && projects.length > 0) {
+        generateProjects(projects);
+      }
+
+      // Experiences
+      const experiences = data.experiences;
+      if (experiences && experiences.length > 0) {
+        generateExperience(experiences);
+      }
+    })
+    .catch((error) => console.error("Error al obtener usuarios:", error));
 }
 
 function generateAboutSections(aboutSections) {
