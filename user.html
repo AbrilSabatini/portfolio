@@ -104,7 +104,7 @@
     <div id="hero" class="hero">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-12 col-md-6 hidden-until-loaded">
             <h1 class="name"></h1>
             <div class="page-scroll">
               <p class="job-title"></p>
@@ -113,36 +113,13 @@
               <a href="#portfolio" class="btn btn-border">Ver más</a>
             </div>
           </div>
-
-          <div class="col-md-6">
-            <div class="cv-container">
-              <iframe
-                class="cv-iframe"
-                loading="lazy"
-                src=""
-                allowfullscreen="allowfullscreen"
-                allow="fullscreen"
-              >
-              </iframe>
-            </div>
-            <!---->
-          </div>
         </div>
       </div>
     </div>
     <!-- /.hero -->
 
-    <!--
-<a
-  href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGglYHRgMw&#x2F;fFvaUW-eNzJ4z-swmJbeng&#x2F;view?utm_content=DAGglYHRgMw&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
-  target="_blank"
-  rel="noopener"
-  >Programadora backend - Sabatini
-</a>
-de Abril Sabatini-->
-
     <main id="main" class="site-main">
-      <section id="about" class="site-section section-about text-center">
+      <section id="about" class="site-section section-about text-center hidden-until-loaded">
         <div class="container">
           <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -155,14 +132,18 @@ de Abril Sabatini-->
             </div>
           </div>
         </div>
-        <section class="site-section section-skills">
-          <div class="container"></div>
-        </section>
-        <!-- /.secton-skills -->
+        
+        <section id="section-skills">
+          <div class="container">
+            <div id="skills-carousel" class="carousel"></div>
+          </div>
+        </section>                      
+        <!-- section-skills -->
+
 
         <section
           id="about-section"
-          class="site-section section-services overlay text-center"
+          class="site-section section-services overlay text-center hidden-until-loaded"
         >
           <div class="container">
             <div class="row">
@@ -194,7 +175,7 @@ de Abril Sabatini-->
       </section>
       <!-- /.secton-about -->
 
-      <section id="portfolio" class="site-section section-portfolio">
+      <section id="portfolio" class="site-section section-portfolio hidden-until-loaded">
         <div class="container">
           <div class="text-center">
             <h3>Proyectos</h3>
@@ -239,7 +220,7 @@ de Abril Sabatini-->
             </div>
         </section> /.section-counters -->
 
-      <section id="experience" class="site-section section-form text-center">
+      <section id="experience" class="site-section section-form text-center hidden-until-loaded">
         <div class="container">
           <h3>Experiencia laboral</h3>
           <img src="assets/img/lines.svg" class="img-lines" alt="lines" />

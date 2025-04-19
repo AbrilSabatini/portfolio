@@ -23,6 +23,11 @@ function startIndex() {
         jobTitleElement.textContent = jobTitle;
       }
 
+      const contentElement = document.querySelector(".col-md-6");
+      if (contentElement) {
+        contentElement.classList.remove("loading");
+      }
+
       // About Me Element
       const aboutMe = data.about;
       const aboutElement = document.querySelector(".about-me");
@@ -36,8 +41,8 @@ function startIndex() {
       if (cvLink) {
         const cvId = cvLink.split("/d/")[1]?.split("/")[0]; // Obtener id del archivo de google drive
         console.log("ID del CV:", cvId);
-        const cvIframeElement = document.querySelector(".cv-iframe");
-        cvIframeElement.src = `https://drive.google.com/file/d/${cvId}/preview`;
+        /* const cvIframeElement = document.querySelector(".cv-iframe");
+        cvIframeElement.src = `https://drive.google.com/file/d/${cvId}/preview`; */
 
         // CV Link Element
         const cvLinkElement = document.querySelector(".cv-link");
@@ -45,6 +50,12 @@ function startIndex() {
         cvLinkElement.download = "CV_" + name.replace(/\s+/g, "_") + ".pdf";
       } else {
         console.error("No se pudo extraer el ID del CV de Google Drive.");
+      }
+
+      // Skills
+      const skills = data.skills;
+      if (skills && skills.length > 0) {
+        generateSkills(skills);
       }
 
       // About Section
@@ -65,8 +76,56 @@ function startIndex() {
       if (experiences && experiences.length > 0) {
         generateExperience(experiences);
       }
+
+      showSections();
     })
     .catch((error) => console.error("Error al obtener usuarios:", error));
+}
+
+function showSections() {
+  const hiddenSections = document.querySelectorAll(".hidden-until-loaded");
+  hiddenSections.forEach((section) => {
+    section.classList.remove("hidden-until-loaded");
+  });
+}
+
+function generateSkills(skills) {
+  const skillsContainer = document.getElementById("skills-carousel");
+  if (!skillsContainer) {
+    console.error("No se encontró el contenedor de skills.");
+    return;
+  }
+
+  skillsContainer.innerHTML = ""; // Limpiamos antes de cargar
+
+  // Función para crear un grupo
+  const createGroup = (skills, isDuplicate = false) => {
+    const group = document.createElement("div");
+    group.classList.add("group");
+    if (isDuplicate) group.setAttribute("aria-hidden", "true");
+
+    skills.forEach((skill) => {
+      const skillDiv = document.createElement("div");
+      skillDiv.classList.add("card");
+
+      skillDiv.innerHTML = `
+        <div class="skill-item">
+          <img src="${
+            skill.urlImage || "https://via.placeholder.com/100"
+          }" alt="${skill.name}">
+          <p>${skill.name}</p>
+        </div>
+      `;
+
+      group.appendChild(skillDiv);
+    });
+
+    return group;
+  };
+
+  // Agregamos grupo original y duplicado
+  skillsContainer.appendChild(createGroup(skills));
+  skillsContainer.appendChild(createGroup(skills, true));
 }
 
 function generateAboutSections(aboutSections) {

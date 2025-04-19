@@ -7,7 +7,7 @@ async function fetchUsers() {
 
   try {
     const response = await fetch(
-      "https://portfolio-backend-1zhb.onrender.com/users/"
+      "https://portfolio-backend-1zhb.onrender.com/users/names"
     );
     const users = await response.json();
 

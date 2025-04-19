@@ -246,7 +246,7 @@ body {
 .section-users .container {
   padding: 120px 100px;
   position: relative;
-  background-color: #fff;
+  background: url(../img/hero.jpg) no-repeat center / cover;
   box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -260,36 +260,28 @@ body {
     box-sizing: border-box;
 }
 
+/* Hide sections until all data is loaded and ready to display */
+.hidden-until-loaded {
+  visibility: hidden;
+  opacity: 0;
+}
+
 /* HERO
 ================================================== */
 .hero {
+  min-height: 100vh;
   background: url(../img/hero.jpg) no-repeat center / cover;
-  height: 100%;
   width: 100%;
-  min-height: 700px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .hero .container {
-  position: relative;
   height: 100%;
-}
-
-.hero .col-md-6:first-child {
-  position: absolute;
-  top: 35%;
-  left: 0;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  z-index: 2;
-}
-
-.hero .col-md-6:last-child {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: block; 
 }
 
 .hero h1 {
@@ -305,10 +297,6 @@ body {
   line-height: 1;
 }
 
-.hero iframe {
-  width: 425px;
-  height: 600px;
-}
 
 /* SITEMAIN
 ================================================== */
@@ -320,7 +308,7 @@ body {
 }
 /* site-section */
 .site-section {
-  padding-top: 120px;
+  padding-top: 100px;
 }
 
 .site-section h2,
@@ -336,33 +324,6 @@ body {
 
 .site-section p {
   margin-bottom: 35px;
-}
-
-/* Section: Skills */
-.section-skills {
-  padding-bottom: 120px;
-}
-
-.skill + .skill {
-  margin-top: 50px;
-}
-
-.skill h4 {
-  font-size: 24px;
-  text-transform: uppercase;
-  margin: 0 0 15px;
-}
-
-.progress {
-  height: 15px;
-  margin-bottom: 0;
-  border-radius: 0;
-  background-color: #dfdfdf;
-  box-shadow: none;
-}
-
-.progress-bar {
-  background-color: #212121;
 }
 
 /* Section: Services */
@@ -420,11 +381,67 @@ body {
   margin-bottom: 0;
 }
 
-/* Section: Portfolio */
-.section-portfolio {
-  padding-bottom: 120px;
+/* Section: Skill */
+.carousel {
+  margin: 0 auto;
+  padding: 20px 0;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  position: relative;
 }
 
+.carousel > * {
+  flex: 0 0 100%;
+}
+
+.group {
+  display: flex;
+  gap: 20px;
+  padding-right: 20px;
+  will-change: transform;
+  animation: scrolling 25s linear infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.carousel:hover .group {
+  animation-play-state: paused;
+}
+
+.card {
+  flex: 0 0 auto;
+  width: 180px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 20px 0;
+  padding: 20px;
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.skill-item p {
+  margin: 0;
+}
+
+/* Section: Portfolio */
 .portfolio-item {
   height: 280px;
   margin-bottom: 30px;
@@ -602,9 +619,31 @@ body {
   margin-bottom: 20px;
 }
 
+/* Section: Skills */
+.skill-card {
+  padding: 15px;
+  text-align: center;
+}
+
+.skill-card img {
+  max-width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-weight: bold;
+  color: #333;
+}
+
+.col {
+  margin-bottom: 30px; 
+}
+
 /* Section: Form*/
 .section-form {
-  padding-bottom: 120px;
+  padding-bottom: 10px;
 }
 
 form {
