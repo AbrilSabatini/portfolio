@@ -442,14 +442,26 @@ body {
 }
 
 /* Section: Portfolio */
-.portfolio-item {
-  height: 280px;
-  margin-bottom: 30px;
-  position: relative;
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-.section-portfolio .col-md-4:nth-last-child(-n + 3) .portfolio-item {
-  margin-bottom: 0;
+.portfolio-card {
+  width: 100%;
+}
+
+.portfolio-item {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-res {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .portfolio-item:before {

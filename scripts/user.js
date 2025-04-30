@@ -153,7 +153,9 @@ function generateAboutSections(aboutSections) {
 }
 
 function generateProjects(projects) {
-  const portfolioContainer = document.querySelector("#portfolio .row");
+  const portfolioContainer = document.querySelector(
+    "#portfolio .portfolio-grid"
+  );
   portfolioContainer.innerHTML = ""; // Limpiar contenido previo
 
   // Limpiar modales previos
@@ -172,7 +174,7 @@ function generateProjects(projects) {
 
     // Crear tarjeta del proyecto
     const projectElement = document.createElement("div");
-    projectElement.classList.add("col-md-4", "col-xs-6");
+    projectElement.classList.add("portfolio-card");
     projectElement.innerHTML = `
       <div class="portfolio-item">
         <div class="main-tech"> 
