@@ -40,7 +40,6 @@ function startIndex() {
 
       if (cvLink) {
         const cvId = cvLink.split("/d/")[1]?.split("/")[0]; // Obtener id del archivo de google drive
-        console.log("ID del CV:", cvId);
         /* const cvIframeElement = document.querySelector(".cv-iframe");
         cvIframeElement.src = `https://drive.google.com/file/d/${cvId}/preview`; */
 
@@ -60,7 +59,6 @@ function startIndex() {
 
       // About Section
       const aboutSections = data.aboutSections;
-      console.log("Secciones de about:", aboutSections);
       if (aboutSections && aboutSections.length > 0) {
         generateAboutSections(aboutSections);
       }
@@ -164,7 +162,6 @@ function generateProjects(projects) {
   const modalContainer = document.createElement("div"); // Contenedor para los modales
 
   projects.forEach((project, index) => {
-    console.log("Proyecto actual:", project);
     const projectId = `portfolioItem${index + 1}`;
 
     // Obterner tecnología principal
