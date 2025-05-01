@@ -177,7 +177,7 @@ function generateProjects(projects) {
         <div class="main-tech"> 
           <p>${mainTech}</p>
         </div> 
-        <img src="${
+        <img loading="lazy" src="${
           project.coverImageUrl || "assets/img/Portfolio-1.jpg"
         }" class="img-res" alt="${project.name}">
         <div class="portfolio-item-info">
@@ -211,7 +211,7 @@ function generateProjects(projects) {
             <a class="close" data-dismiss="modal">
               <span class="glyphicon glyphicon-remove"></span>
             </a>
-            <img src="${
+            <img loading="lazy" src="${
               project.imageUrl || "assets/img/Portfolio-1.jpg"
             }" class="img-res" alt="${project.name}">
           </div>
